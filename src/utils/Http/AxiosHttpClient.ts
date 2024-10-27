@@ -1,8 +1,7 @@
-import axios, { AxiosInstance, CancelTokenSource, AxiosRequestConfig, AxiosError } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosError } from "axios";
 
-export class HttpClient {
+export class AxiosHttpClient {
     private axiosInstance: AxiosInstance;
-    private cancelTokenSource: CancelTokenSource | null = null;
 
     constructor(configs?: AxiosRequestConfig) {
         this.axiosInstance = axios.create({
@@ -13,7 +12,9 @@ export class HttpClient {
             },
             ...configs,
         });
+        this.initInterceptors();
     }
+
 
 
     public async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
@@ -34,12 +35,14 @@ export class HttpClient {
 
 
    private async request<T>(config: AxiosRequestConfig): Promise<T> {
+       const abortController = new AbortController();
+       const signal = abortController.signal;
+
        try {
-           this.cancelTokenSource = axios.CancelToken.source();
 
            const response = await this.axiosInstance.request<T>({
                ...config,
-               cancelToken: this.cancelTokenSource.token,
+               signal,
            });
 
         return response.data;
@@ -53,15 +56,39 @@ export class HttpClient {
            }
            return Promise.reject(error);
        } finally {
-           this.cancelRequest();
+           abortController.abort("Reques was cancellad");
     }
+    }
+    
+
+    private initInterceptors() {
+  this.axiosInstance.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => {
+      console.error("Request failed to send", error);
+      return Promise.reject(error);
+    }
+  );
+
+  this.axiosInstance.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error instanceof AxiosError && error.response?.status === 401) {
+        console.error("Unauthorized request", error.response.data.message);
+        // 1. Redirect to login page
+        window.location.href = "/login?returnUrl=" + encodeURIComponent(window.location.pathname);
+        // 2. Refresh token logic (uncomment if implemented)
+        // const token = await refreshToken();
+      }
+      return Promise.reject(error);
+    }
+  );
 }
 
-
-    private cancelRequest() {
-        if (this.cancelTokenSource) {
-            this.cancelTokenSource.cancel("Request cancel by user");
-            this.cancelTokenSource = null;
-        }
-    }
 }

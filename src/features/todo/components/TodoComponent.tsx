@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+
+
 import { Todo, TodoService } from '../service/todo.service';
 
 const TodoComponent = () => {
@@ -7,13 +9,16 @@ const TodoComponent = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
     let isMounted = true;
-    const todoService = new TodoService();
+
+    const todoService = new TodoService(signal);
 
     const fetchTodos = async () => {
       setLoading(true);
       try {
-        const response = await todoService.fetchAllTodos();
+        const response = await todoService.getAllTodos();
         if (isMounted) {
           setTodos(response.todos);
         }
@@ -32,6 +37,7 @@ const TodoComponent = () => {
 
     return () => {
       isMounted = false;
+      abortController.abort();
     };
   }, []);
 
@@ -46,14 +52,16 @@ const TodoComponent = () => {
             <th>Id</th>
             <th>Todo</th>
             <th>Completed</th>
+            <th>Id User</th>
           </tr>
         </thead>
         <tbody>
-          {todos.map((t) => (
-            <tr key={t.id}>
-              <td>{t.id}</td>
-              <td>{t.todo}</td>
-              <td>{t.completed ? 'Yes' : 'No'}</td>
+         {todos.map((todo) => (
+            <tr key={todo.id}>
+              <td>{todo.id}</td>
+              <td>{todo.todo}</td>
+              <td>{todo.completed ? "Yes" : "No"}</td>
+              <td>{todo.userId}</td>
             </tr>
           ))}
         </tbody>
