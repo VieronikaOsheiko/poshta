@@ -1,4 +1,6 @@
-import { FetchHttpClient } from "../../../utils/Http/FetchHttpClient"; 
+import { GenericAbortSignal } from "axios";
+import { AxiosHttpClient } from "../../../utils/Http/AxiosHttpClient";
+
 
 interface PaginatedResponse {
   total: number;
@@ -8,9 +10,9 @@ interface PaginatedResponse {
 
 export interface Todo {
   id: number;
-  userId: number;
   todo: string;
   completed: boolean;
+  userId: number;
 }
 
 type CreateTodoRequest = Omit<Todo, "id">;
@@ -18,18 +20,19 @@ type UpdateTodoRequest = Todo;
 type DeleteTodoResponse = Todo & {
   isDeleted: boolean;
   deletedOn: Date | string;
-}
-
+};
 
 interface PaginatedTodoResponse extends PaginatedResponse {
   todos: Todo[];
 }
-export class TodoService {
-  private httpClient: FetchHttpClient;
 
-  constructor(signal: AbortSignal) {
-    this.httpClient = new FetchHttpClient({
-      baseUrl: "https://dummyjson.com/todos",
+export class TodoService {
+  private httpClient: AxiosHttpClient;
+
+  constructor(signal?: GenericAbortSignal) {
+    this.httpClient = new AxiosHttpClient({
+      baseURL: "https://dummyjson.com/todos",
+      timeout: 10000,
       signal,
     });
   }
@@ -38,11 +41,11 @@ export class TodoService {
     return await this.httpClient.get<PaginatedTodoResponse>("");
   }
 
-  public async getAllTodoById(id: number) {
+  public async getTodoById(id: number) {
     return await this.httpClient.get<Todo>(`/${id}`);
   }
 
-  public async getRandomTodo() {
+  public async getRamdomTodo() {
     return await this.httpClient.get<Todo>("/random");
   }
 
@@ -54,16 +57,16 @@ export class TodoService {
 
   public async createTodo(todo: Todo) {
     return await this.httpClient.post<Todo, CreateTodoRequest>("/add", todo);
-    }
+  }
 
-    public async updateTodo(todo: Todo) {
-      return await this.httpClient.put<Todo, UpdateTodoRequest>(
-        `/${todo.id}`,
-        todo
-      );
-    }
+  public async updateTodo(todo: Todo) {
+    return await this.httpClient.put<Todo, UpdateTodoRequest>(
+      `/${todo.id}`,
+      todo
+    );
+  }
 
-     public async deleteTodoById(id: number) {
+  public async deleteTodoById(id: number) {
     return await this.httpClient.delete<DeleteTodoResponse>(`/${id}`);
   }
 }
