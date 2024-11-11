@@ -1,13 +1,19 @@
-import AppRouter from "./routes/AppRouter.tsx";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./Application/AuthContext";
+import Login from "./features/auth/LoginPage"; // Ваш компонент входу
 
-import "./App.css";
-
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <AppRouter />
-    </>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          {/* Додайте інші маршрути */}
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
-}
+};
 
 export default App;
