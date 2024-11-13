@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AuthProvider } from "../Application/AuthContext";  // Ensure this is imported correctly
-import Login from "../features/auth/LoginPage";  // Your Login page component
-import UserPage from "../features/users/UserPage";  // Example of another page that requires authentication
+import { AuthProvider } from "./AuthContext";
+import Login from "../../features/auth/LoginPage";
+import UserPage from "../../features/users/UserPage";
+import Register from "../../features/auth/Register";
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/user" element={<UserPage />} />
+          <Route path="/register" element={<Register />} />
           {/* Add other routes here */}
         </Routes>
       </Router>

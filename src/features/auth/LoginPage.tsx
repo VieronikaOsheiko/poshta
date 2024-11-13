@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Application/AuthContext"; // Імпортуємо хук
+import { useAuth } from "../../Application/Service/AuthContext";
 
 const Login: React.FC = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-  const { login: authLogin } = useAuth(); // Отримуємо функцію login з контексту
+  const { login: authLogin } = useAuth();
 
   const handleLogin = async () => {
     try {
-      const success = await authLogin(login, password); // Викликаємо login
+      const success = await authLogin(login, password);
       if (success) {
         navigate("/users");
       } else {

@@ -1,7 +1,7 @@
 // src/routes/ProtectedRoute.tsx
 import React, { FC, ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import  AuthService  from "../Application/AuthService";  // Іменований імпорт
+import  AuthService  from "../Application/Service/AuthService";  // Іменований імпорт
 
 interface ProtectedRouteProps {
   children: ReactNode;
