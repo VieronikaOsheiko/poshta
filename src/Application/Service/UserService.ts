@@ -11,7 +11,7 @@ class UserService {
   });
 
   async getAll(): Promise<UserDto[]> {
-    return await this.httpClient.get<UserDto[]>("/getAll/");
+    return await this.httpClient.get<UserDto[]>("/users");
   }
 
   async getById(): Promise<UserDto> {

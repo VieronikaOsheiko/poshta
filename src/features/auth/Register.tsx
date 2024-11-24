@@ -7,9 +7,8 @@ const Register: React.FC = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState<number>(0);
-  const [firstname, setFirstname] = useState("");
+  const [firstName, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -27,7 +26,7 @@ const Register: React.FC = () => {
         login,
         password,
         phoneNumber,
-        firstname,
+        firstName,
         lastname,
       });
       navigate("/login");
@@ -64,16 +63,16 @@ const Register: React.FC = () => {
             required
           />
           <input
-            type="number" // змінено на number
+            type="number"
             placeholder="PhoneNumber"
             value={phoneNumber}
-            onChange={(e) => setPhoneNumber(Number(e.target.value))} // перетворення на number
+            onChange={(e) => setPhoneNumber(Number(e.target.value))}
             required
           />
           <input
             type="text"
             placeholder="FirstName"
-            value={firstname}
+            value={firstName}
             onChange={(e) => setFirstname(e.target.value)}
             required
           />

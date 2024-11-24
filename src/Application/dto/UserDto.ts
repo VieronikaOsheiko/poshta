@@ -1,12 +1,11 @@
 export interface UserDto {
-    id?: string;
-    login: string;
-    password: string;
-    phoneNumber: number;
-    firstname: string;
-    lastname : string;
-    isAdmin: boolean;
-  }
-export interface UserBalanceDto {
+  id?: string;
+  login: string;
+  password: string;
+  phoneNumber: number;
+  firstName: string;
+  lastname: string;
+}
+export interface UserPhoneNumberDto {
     phoneNumber: number;
   }

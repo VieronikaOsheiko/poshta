@@ -15,7 +15,6 @@ const AppRouter = () => {
       <Routes>
         {/* Маршрут для сторінки логіну */}
         <Route path="/login" element={<LoginPage />} />
-        
         {/* Захищені маршрути, доступні після авторизації */}
         <Route
           path="/"
@@ -30,7 +29,6 @@ const AppRouter = () => {
           <Route path="books" element={<BookReviewsPage />} />
           <Route path="users" element={<UsersPage />} />
         </Route>
-        
         {/* Сторінка 404 для невідомих маршрутів */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
