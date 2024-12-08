@@ -48,15 +48,14 @@ const ParcelPage: React.FC = () => {
   const handleSave = async () => {
     try {
       if (editingParcelId) {
-        // Оновлення існуючої посилки
-        await parcelService.update({ ...formData, id: editingParcelId } as ParcelDto);  // виклик через екземпляр
+
+        await parcelService.update({ ...formData, id: editingParcelId } as ParcelDto);  
       } else {
-        // Створення нової посилки
-        await parcelService.create(formData as ParcelDto);  // виклик через екземпляр
+        await parcelService.create(formData as ParcelDto);  
       }
       setEditingParcelId(null);
       setFormData({});
-      navigate(0); // Оновлення сторінки
+      navigate(0);
     } catch (err: any) {
       setError(err.message || "Не вдалося зберегти дані.");
     }
@@ -69,7 +68,7 @@ const ParcelPage: React.FC = () => {
 
   const handleDelete = async (parcelId: string) => {
     try {
-      await parcelService.delete(parcelId);  // виклик через екземпляр
+      await parcelService.delete(parcelId);
       setParcels(parcels.filter((parcel) => parcel.id !== parcelId));
     } catch (err: any) {
       setError(err.message || "Не вдалося видалити посилку.");

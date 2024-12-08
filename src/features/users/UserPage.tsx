@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Імпортуємо useNavigate
+import { useNavigate } from "react-router-dom";
 import UserService from "../../Application/Service/UserService";
 import { UserDto } from "../../Application/dto/UserDto";
 

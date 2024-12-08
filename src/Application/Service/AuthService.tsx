@@ -3,29 +3,29 @@ import {HttpClient} from "../HttpClient";
 import { UserDto } from "../dto/UserDto";
 
 class AuthService {
-  private static tokenKey = "token"; // Ключ для зберігання токену в localStorage
-  private static httpClient = new HttpClient({}); // Ініціалізація HttpClient
+  private static tokenKey = "token";
+  private static httpClient = new HttpClient({});
 
-  // Метод для входу
+
   static async login(login: string, password: string): Promise<boolean> {
     try {
       const response = await this.httpClient.post<string>("/identity/token", {
         login,
         password,
       });
-      localStorage.setItem(this.tokenKey, response); // Збереження токену
+      localStorage.setItem(this.tokenKey, response);
       return true;
     } catch {
-      return false; // Повертаємо false у разі помилки
+      return false;
     }
   }
 
-  // Метод для виходу
+
   static logout(): void {
-    localStorage.removeItem(this.tokenKey); // Видалення токену з localStorage
+    localStorage.removeItem(this.tokenKey);
   }
 
-  // Метод для отримання поточного користувача
+
   static async getCurrentUser(): Promise<UserDto> {
     const userId = this.getUserIdFromToken();
     if (!userId) {
@@ -41,23 +41,21 @@ class AuthService {
     }
   }
 
-  // Перевірка, чи користувач аутентифікований
   static isAuthenticated(): boolean {
-    return !!localStorage.getItem(this.tokenKey); // Повертаємо true, якщо токен є
+    return !!localStorage.getItem(this.tokenKey);
   }
 
-  // Отримання токену
   static getToken(): string | null {
-    return localStorage.getItem(this.tokenKey); // Повертає токен або null, якщо токену немає
+    return localStorage.getItem(this.tokenKey);
   }
 
-  // Отримання userId з токену
+
   static getUserIdFromToken(): string | null {
     const token = this.getToken();
     if (!token) return null;
 
     const decodedToken: { userid: string } = jwtDecode(token);
-    return decodedToken.userid; // Повертає userId або null
+    return decodedToken.userid;
   }
 }
 

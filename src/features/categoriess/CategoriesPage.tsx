@@ -3,7 +3,7 @@ import CategoryService from "../../Application/Service/CategoryService";
 import { CategoryDto } from "../../Application/dto/CategoryDto";
 
 const CategoryPage: React.FC = () => {
-  const [categories, setCategories] = useState<CategoryDto[]>([]); // Масив категорій
+  const [categories, setCategories] = useState<CategoryDto[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<Partial<CategoryDto>>({});
   const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null);
@@ -12,8 +12,8 @@ const CategoryPage: React.FC = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const categories = await CategoryService.getAll(); // Отримуємо всі категорії
-        setCategories(categories); // Зберігаємо всі категорії
+        const categories = await CategoryService.getAll();
+        setCategories(categories); 
       } catch (err: any) {
         setError(err.message || "Сталася помилка під час завантаження категорій.");
       }

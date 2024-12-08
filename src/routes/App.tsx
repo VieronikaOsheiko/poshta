@@ -16,7 +16,6 @@ const App: React.FC = () => {
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {/* Захищені маршрути */}
           <Route
             path="/users"
             element={
