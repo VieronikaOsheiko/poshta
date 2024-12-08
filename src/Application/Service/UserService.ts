@@ -1,4 +1,4 @@
-import { HttpClient } from "../../../src/HttpClient";
+import { HttpClient } from "../HttpClient";
 import AuthService from "./AuthService";
 import { UserDto, UserPhoneNumberDto } from "../dto/UserDto";
 
@@ -7,7 +7,7 @@ class UserService {
     baseURL: "https://localhost:44371",
   });
 
-  // Отримуємо всіх користувачів
+
   async getAll(): Promise<UserDto[]> {
     try {
       return await this.httpClient.get<UserDto[]>("/users");
@@ -17,7 +17,6 @@ class UserService {
     }
   }
 
-  // Отримуємо дані поточного користувача
   async getById(): Promise<UserDto> {
     const userId = AuthService.getUserIdFromToken();
     if (!userId) {
@@ -25,7 +24,7 @@ class UserService {
     }
 
     try {
-      // Використовуємо новий маршрут для поточного користувача
+  
       return await this.httpClient.get<UserDto>(`/users/me`);
     } catch (error) {
       console.error("Error fetching user by ID:", error);
@@ -33,7 +32,7 @@ class UserService {
     }
   }
 
-  // Отримуємо номер телефону поточного користувача
+
   async getPhoneNumberById(): Promise<UserPhoneNumberDto> {
     const userId = AuthService.getUserIdFromToken();
     if (!userId) {
@@ -48,7 +47,7 @@ class UserService {
     }
   }
 
-  // Створюємо нового користувача
+  
   async create(data: UserDto): Promise<UserDto> {
     try {
       return await this.httpClient.post<UserDto>("/users", data);
@@ -58,7 +57,7 @@ class UserService {
     }
   }
 
-  // Видаляємо користувача
+
   async delete(userId: string): Promise<void> {
     try {
       await this.httpClient.delete(`/users/${userId}`);
@@ -68,7 +67,7 @@ class UserService {
     }
   }
 
-  // Оновлюємо дані користувача
+
   async update(data: UserDto): Promise<UserDto> {
     const userId = AuthService.getUserIdFromToken();
     if (!userId) {

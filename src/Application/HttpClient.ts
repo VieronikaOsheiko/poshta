@@ -1,7 +1,10 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
-import AuthService from "../src/Application/Service/AuthService";
+import AuthService from "./Service/AuthService";
 
 export class HttpClient {
+  static post<T>(arg0: string, arg1: { login: string; password: string; }) {
+    throw new Error("Method not implemented.");
+  }
   private axiosInstance: AxiosInstance;
 
   constructor(configs: AxiosRequestConfig) {
@@ -82,4 +85,4 @@ export class HttpClient {
       .delete(url, config)
       .then((response) => response.data);
   }
-}
+}//pod snos
