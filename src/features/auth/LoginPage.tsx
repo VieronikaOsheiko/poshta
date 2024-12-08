@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Application/Service/AuthContext";
+import { useAuth } from "../../Application/AuthContext";
 
 const Login: React.FC = () => {
   const [login, setLogin] = useState("");
@@ -9,7 +9,8 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const { login: authLogin } = useAuth();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
       const success = await authLogin(login, password);
       if (success) {
@@ -26,13 +27,7 @@ const Login: React.FC = () => {
   return (
     <div className="login-page">
       <div className="form">
-        <form
-          className="login-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleLogin();
-          }}
-        >
+        <form className="login-form" onSubmit={handleLogin}>
           <input
             type="text"
             placeholder="Логін"

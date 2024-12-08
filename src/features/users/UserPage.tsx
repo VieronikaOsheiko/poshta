@@ -8,14 +8,14 @@ const UsersPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<Partial<UserDto>>({});
   const [editingUserId, setEditingUserId] = useState<string | null>(null);
-  const navigate = useNavigate(); // Ініціалізуємо хук useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
         if (token) {
-          const currentUser = await UserService.getById(); // Запит на поточного користувача
+          const currentUser = await UserService.getById();
           setUser(currentUser);
         }
       } catch (err: any) {
@@ -65,14 +65,22 @@ const UsersPage = () => {
   const handleDelete = async (userId: string) => {
     if (userId) {
       try {
-        await UserService.delete(userId); // Видаляємо користувача
-        setUser(null); // Очищаємо користувача після видалення
+        await UserService.delete(userId);
+        setUser(null);
         console.log("Перенаправлення на реєстрацію...");
-        navigate("/register"); // Перенаправляємо на сторінку реєстрації
+        navigate("/register");
       } catch (err: any) {
         setError(err.message || "Не вдалося видалити користувача.");
       }
     }
+  };
+
+  const handleCategoryClick = () => {
+    navigate("/category");
+  };
+
+  const handleSendParcelClick = () => {
+    navigate("/parcel");
   };
 
   return (
@@ -146,6 +154,15 @@ const UsersPage = () => {
               </div>
             </div>
           )}
+
+          <div>
+            <button onClick={handleCategoryClick} style={styles.categoryButton}>
+              Категорія
+            </button>
+            <button onClick={handleSendParcelClick} style={styles.sendParcelButton}>
+              Відправити посилку
+            </button>
+          </div>
         </div>
       ) : (
         <p>Завантаження...</p>
@@ -197,6 +214,24 @@ const styles: Record<string, React.CSSProperties> = {
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
+  },
+  categoryButton: {
+    backgroundColor: "yellow",
+    color: "black",
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    marginTop: "20px",
+  },
+  sendParcelButton: {
+    backgroundColor: "#800080",
+    color: "white",
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    marginTop: "20px",
   },
 };
 

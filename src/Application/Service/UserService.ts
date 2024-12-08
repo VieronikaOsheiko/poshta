@@ -1,4 +1,4 @@
-import { HttpClient } from "../../../src/HttpClient";
+import { HttpClient } from "../HttpClient";
 import AuthService from "./AuthService";
 import { UserDto, UserPhoneNumberDto } from "../dto/UserDto";
 
@@ -7,7 +7,7 @@ class UserService {
     baseURL: "https://localhost:44371",
   });
 
-  // Отримуємо всіх користувачів
+
   async getAll(): Promise<UserDto[]> {
     try {
       return await this.httpClient.get<UserDto[]>("/users");
