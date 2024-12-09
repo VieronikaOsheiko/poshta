@@ -3,7 +3,7 @@ import { CategoryDto } from "../dto/CategoryDto";
 
 class CategoryService {
     private httpClient = new HttpClient({
-      baseURL: "https://localhost:44371", 
+      baseURL: "https://localhost:7266", 
     });
   
     async getAll(): Promise<CategoryDto[]> {

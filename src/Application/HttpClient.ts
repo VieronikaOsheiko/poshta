@@ -2,14 +2,12 @@ import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
 import AuthService from "./Service/AuthService";
 
 export class HttpClient {
-  static post<T>(arg0: string, arg1: { login: string; password: string; }) {
-    throw new Error("Method not implemented.");
-  }
+
   private axiosInstance: AxiosInstance;
 
   constructor(configs: AxiosRequestConfig) {
     this.axiosInstance = axios.create({
-      baseURL: configs.baseURL || "https://localhost:44371",
+      baseURL: configs.baseURL || "https://localhost:7266",
       timeout: configs.timeout || 5000,
       headers: {
         "Content-Type": "application/json",
@@ -85,4 +83,4 @@ export class HttpClient {
       .delete(url, config)
       .then((response) => response.data);
   }
-}//pod snos
+}
