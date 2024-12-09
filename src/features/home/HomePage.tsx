@@ -10,12 +10,12 @@ const HomePage = () => {
 const styles: Record<string, React.CSSProperties> = {
   pageContent: {
     
-    position: "fixed", // Для фіксованого положення
-    top: "10%", // Зміщуємо елемент по вертикалі на 10% висоти екрану
-    left: "50%", // Зміщуємо елемент по горизонталі на 50% ширини екрану
+    position: "fixed",
+    top: "10%",
+    left: "50%",
     transform: "translate(-50%, -50%)",
     flexGrow: 1,
-    padding: "40px", // Відступи всередині
+    padding: "40px",
   },
   pageTitle: {
     color: "#2d6934",
