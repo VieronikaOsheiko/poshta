@@ -8,4 +8,4 @@ export interface UserDto {
 }
 export interface UserPhoneNumberDto {
     phoneNumber: number;
-  }
+}

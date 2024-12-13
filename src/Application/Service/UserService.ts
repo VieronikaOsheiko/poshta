@@ -4,7 +4,7 @@ import { UserDto, UserPhoneNumberDto } from "../dto/UserDto";
 
 class UserService {
   private httpClient = new HttpClient({
-    baseURL: "https://localhost:7266",
+    baseURL: "https://localhost:44371",
   });
 
 

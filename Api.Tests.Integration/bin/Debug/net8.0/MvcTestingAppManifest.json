@@ -1,0 +1,8 @@
+{
+  "Apii, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\nosko\\RiderProjects\\Poshta\\Apii",
+  "Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\nosko\\RiderProjects\\Poshta\\Application",
+  "Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\nosko\\RiderProjects\\Poshta\\Domain",
+  "Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\nosko\\RiderProjects\\Poshta\\Infrastructure",
+  "Test.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\nosko\\RiderProjects\\Poshta\\Test.Data",
+  "Tests.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\nosko\\RiderProjects\\Poshta\\Tests.Common"
+}

@@ -2,8 +2,20 @@ import { HttpClient } from "../HttpClient";
 import { ParcelDto } from "../dto/ParcelDto";
 
 class ParcelService {
+  static create(arg0: ParcelDto) {
+    throw new Error("Method not implemented.");
+  }
+  static update(arg0: ParcelDto) {
+    throw new Error("Method not implemented.");
+  }
+  static getAll(): any {
+    throw new Error("Method not implemented.");
+  }
+  static delete(parcelId: string) {
+    throw new Error("Method not implemented.");
+  }
   private httpClient = new HttpClient({
-    baseURL: "https://localhost:7266",
+    baseURL: "https://localhost:44371",
   });
 
   async getAll(): Promise<ParcelDto[]> {
