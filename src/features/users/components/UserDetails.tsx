@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserDto } from '../../Application/dto/UserDto';
+import { UserDto } from '../../../Application/dto/UserDto';
 import { styles } from './styles';
 
 interface UserDetailsProps {

@@ -1,7 +1,7 @@
 import React from "react";
-import { ParcelDto } from "../../Application/dto/ParcelDto";
-import { UserDto } from "../../Application/dto/UserDto";
-import { CategoryDto } from "../../Application/dto/CategoryDto";
+import { ParcelDto } from "../../../Application/dto/ParcelDto";
+import { UserDto } from "../../../Application/dto/UserDto";
+import { CategoryDto } from "../../../Application/dto/CategoryDto";
 import styles from "./styles";
 
 interface ParcelListProps {

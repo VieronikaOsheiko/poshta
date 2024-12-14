@@ -1,6 +1,6 @@
 
 import React from 'react';
-import './LoadingPage.css'; 
+import '../loading/components/LoadingPage.css';
 
 const LoadingPage: React.FC = () => {
   return (

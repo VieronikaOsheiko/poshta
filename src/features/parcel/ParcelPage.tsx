@@ -6,9 +6,9 @@ import CategoryService from "../../Application/Service/CategoryService";
 import { ParcelDto } from "../../Application/dto/ParcelDto";
 import { UserDto } from "../../Application/dto/UserDto";
 import { CategoryDto } from "../../Application/dto/CategoryDto";
-import ParcelForm from "./ParcelForm";
-import ParcelList from "./ParcelList";
-import styles from "./styles";
+import ParcelForm from "./components/ParcelForm";
+import ParcelList from "./components/ParcelList";
+import styles from "./components/styles";
 import LoadingPage from "../loading/LoadingPage";
 
 const ParcelPage: React.FC = () => {
@@ -18,7 +18,7 @@ const ParcelPage: React.FC = () => {
   const [formData, setFormData] = useState<Partial<ParcelDto>>({});
   const [editingParcelId, setEditingParcelId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const parcelService = new ParcelService();
@@ -34,10 +34,10 @@ const ParcelPage: React.FC = () => {
         setParcels(parcelData);
         setUsers(userData);
         setCategories(categoryData);
-        setLoading(false); 
+        setLoading(false);
       } catch (err: any) {
         setError(err.message || "Сталася помилка при завантаженні даних.");
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -59,17 +59,17 @@ const ParcelPage: React.FC = () => {
       } else {
         await parcelService.create(formData as ParcelDto);
       }
-      setEditingParcelId(null); 
-      setFormData({}); 
-      navigate(0); 
+      setEditingParcelId(null);
+      setFormData({});
+      navigate(0);
     } catch (err: any) {
       setError(err.message || "Не вдалося зберегти дані.");
     }
   };
 
   const handleCancel = () => {
-    setEditingParcelId(null); 
-    setFormData({}); 
+    setEditingParcelId(null);
+    setFormData({});
   };
 
   const handleEditClick = (parcel: ParcelDto) => {

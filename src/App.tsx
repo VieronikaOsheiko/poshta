@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider } from "../Application/AuthContext";
-import Login from "../features/auth/LoginPage";
-import UserPage from "../features/users/UserPage";
-import Register from "../features/auth/Register";
-import CategoryPage from "../features/categoriess/CategoriesPage";
-import ParcelPage from "../features/parcel/ParcelPage";
-import ProtectedRoute from "./ProtectedRoute";
+import { AuthProvider } from "./Application/AuthContext";
+import Login from "./features/auth/LoginPage";
+import UserPage from "./features/users/UserPage";
+import Register from "./features/auth/Register";
+import CategoryPage from "./features/categoriess/CategoriesPage";
+import ParcelPage from "./features/parcel/ParcelPage";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 const App: React.FC = () => {
   return (

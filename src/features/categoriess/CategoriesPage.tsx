@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import CategoryService from "../../Application/Service/CategoryService";
 import { CategoryDto } from "../../Application/dto/CategoryDto";
-import CategoryList from "./CategoryList";
-import CategoryForm from "./CategoryForm";
+import CategoryList from "./components/CategoryList";
+import CategoryForm from "./components/CategoryForm";
 import LoadingPage from "../loading/LoadingPage";
 
 const CategoryPage: React.FC = () => {

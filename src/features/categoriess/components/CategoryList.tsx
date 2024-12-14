@@ -1,5 +1,5 @@
 import React from "react";
-import { CategoryDto } from "../../Application/dto/CategoryDto";
+import { CategoryDto } from "../../../Application/dto/CategoryDto";
 import CategoryItem from "./CategoryItem";
 
 interface CategoryListProps {

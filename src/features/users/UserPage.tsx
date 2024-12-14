@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserService from "../../Application/Service/UserService";
 import { UserDto } from "../../Application/dto/UserDto";
-import UserForm from './UserForm';
-import UserDetails from './UserDetails';
-import { styles } from './styles';
+import UserForm from './components/UserForm';
+import UserDetails from './components/UserDetails';
+import { styles } from './components/styles';
 import LoadingPage from "../loading/LoadingPage"; 
 
 const UsersPage = () => {
