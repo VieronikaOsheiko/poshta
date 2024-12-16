@@ -1,0 +1,56 @@
+export const styles: Record<string, React.CSSProperties> = {
+  pageContent: {
+    padding: "40px",
+    width: "80%",
+    margin: "0 auto",
+  },
+  pageTitle: {
+    color: "#2d6934",
+    fontSize: "46px",
+    fontWeight: "bold",
+    marginBottom: "10px",
+  },
+  error: {
+    color: "red",
+    fontSize: "16px",
+    marginBottom: "20px",
+  },
+  buttons: {
+    marginTop: "20px",
+  },
+  editButton: {
+    backgroundColor: "#4CAF50",
+    color: "white",
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: "5px",
+    marginRight: "10px",
+    cursor: "pointer",
+  },
+  deleteButton: {
+    backgroundColor: "#f44336",
+    color: "white",
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+  },
+  categoryButton: {
+    backgroundColor: "yellow",
+    color: "black",
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    marginTop: "20px",
+  },
+  sendParcelButton: {
+    backgroundColor: "#800080",
+    color: "white",
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    marginTop: "20px",
+  },
+};
